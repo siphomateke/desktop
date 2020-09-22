@@ -1,5 +1,13 @@
 const path = require('path')
 
+const linuxConfig = {
+    icon: './build/icon.png',
+    productName: 'Raindrop.io',
+    genericName: 'Bookmark manager',
+    description: 'All-in-one bookmark manager',
+    categories: ['Office', 'Utility', 'Productivity'],
+}
+
 module.exports = {
     packagerConfig: {
         icon:               './build/icon',
@@ -37,7 +45,8 @@ module.exports = {
         {
             name: '@electron-forge/maker-zip',
             platforms: [
-                'darwin'
+                'darwin',
+                'linux'
             ]
         },
         {
@@ -65,6 +74,27 @@ module.exports = {
                 loadingGif: path.resolve(__dirname, 'build', 'win', 'loadingGif.gif'),
                 setupIcon:  path.resolve(__dirname, 'build', 'icon.ico'),
                 setupExe:   'RaindropInstaller.exe'
+            }
+        },
+        {
+            name: '@electron-forge/maker-deb',
+            config: {
+                options: {
+                    ...linuxConfig,
+                    name: 'raindrop',
+                    homepage: 'https://raindrop.io',
+                    maintainer: 'Mussabekov Rustem',
+                    desktopTemplate: './build/linux/desktop.ejs',
+                }
+            }
+        },
+        {
+            name: '@electron-forge/maker-flatpak',
+            config: {
+                options: {
+                    ...linuxConfig,
+                    id: 'io.raindrop.Raindrop',
+                }
             }
         }
     ],

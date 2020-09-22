@@ -11,6 +11,7 @@
 	"scripts": {
 		"dev": "electron-forge start",
 		"local": "electron-forge make --platform=darwin",
+		"local:linux": "electron-forge make --platform=linux",
 		"deploy_prod": "git branch -f release/production master && git push --force origin release/production"
 	},
 	"keywords": [],
@@ -31,7 +32,9 @@
 	},
 	"devDependencies": {
 		"@electron-forge/cli": "^6.0.0-beta.50",
+		"@electron-forge/maker-deb": "^6.0.0-beta.53",
 		"@electron-forge/maker-dmg": "^6.0.0-beta.50",
+		"@electron-forge/maker-flatpak": "^6.0.0-beta.53",
 		"@electron-forge/maker-squirrel": "^6.0.0-beta.50",
 		"@electron-forge/maker-zip": "^6.0.0-beta.50",
 		"@electron-forge/publisher-github": "^6.0.0-beta.50",
